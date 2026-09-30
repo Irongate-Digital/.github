@@ -1,0 +1,22 @@
+# CODEOWNERS — Irongate Digital
+#
+# Owners are requested automatically for review on pull requests that touch
+# matching paths. See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repository.
+*                       @ShendyH
+
+# CI/CD, dependency and supply-chain configuration.
+/.github/               @ShendyH
+
+# Dependency manifests and lockfiles.
+/composer.json          @ShendyH
+/composer.lock          @ShendyH
+/package.json           @ShendyH
+/package-lock.json      @ShendyH
+/go.mod                 @ShendyH
+/go.sum                 @ShendyH
+
+# Security and contribution policy.
+/SECURITY.md            @ShendyH
+/CONTRIBUTING.md        @ShendyH
