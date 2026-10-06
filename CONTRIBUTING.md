@@ -40,6 +40,29 @@ Common types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`, `perf`.
   repository explicitly allows it.
 - Delete the branch after merge (configured automatically).
 
+## Versioning & releases
+
+Some repositories automate semantic versioning from Conventional Commits with
+[release-please](https://github.com/google-github-actions/release-please-action). In those repos:
+
+- **The pull request title drives the version bump** — squash-merge makes it the commit message
+  that release-please reads. Keep it conventional: `feat(scope): ...`, `fix(scope): ...`, `chore(scope): ...`.
+- Bump mapping:
+
+  | Title prefix | Version | Use for |
+  |---|---:|---|
+  | `feat(...)` | minor | New user-facing feature |
+  | `fix(...)` | patch | Bug fix |
+  | `feat!` / `BREAKING CHANGE` | major | Breaking / incompatible change |
+  | `chore`, `docs`, `refactor`, `ci`, `test`, `perf`, `style` | no bump | Maintenance & tooling |
+
+- **Discipline**: reserve `feat`/`fix` for real product changes. Use `chore`/`refactor` for tooling,
+  instrumentation, docs and CI — otherwise they bump the release version for no user value.
+- When a `feat`/`fix` lands, release-please opens a release PR (`chore(main): release vX.Y.Z`). Merge
+  it to create the git tag, update `CHANGELOG.md` and publish the GitHub Release. Every release stays
+  reviewable.
+- Treat the release-generated `CHANGELOG.md` as the source of truth; don't hand-edit versions.
+
 ## Dependencies
 
 - Dependency updates are proposed automatically by Dependabot (weekly) and scanned by
